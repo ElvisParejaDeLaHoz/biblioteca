@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-info',
+  templateUrl: './info.page.html',
+  styleUrls: ['./info.page.scss'],
 })
-export class HomePage {
+export class InfoPage  {
 
   title: string;
   arraySlides: { titulo: string, descripcion: string, imagen: string }[];
