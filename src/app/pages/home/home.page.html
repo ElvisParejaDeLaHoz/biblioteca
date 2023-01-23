@@ -1,1 +1,26 @@
-<app-header titulo="inicio"></app-header>
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Biblioteca
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button [routerLink]="['/registrar']" expand="block" color="primary">
+                    Registrate
+                </ion-button>
+                <span class="already"> ó 
+                    <br> ¿Ya eres usuario?
+                </span>
+
+                <ion-button [routerLink]="['/login']" expand="block" color="danger">
+                    Iniciar sesión
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

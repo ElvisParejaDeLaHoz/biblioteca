@@ -1,0 +1,27 @@
+<app-header titulo="Iniciar sesión"></app-header>
+
+<ion-content>
+    <form [formGroup]="iniciarSesionFormu" (ngSubmit)="iniciarSesion(iniciarSesionFormu.value)">
+        <ion-item lines="full">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" formControlName="email" required></ion-input>
+            <span *ngIf="iniciarSesionFormu.controls.email.invalid && iniciarSesionFormu.controls.email.touched" 
+            [ngStyle] ="{'color' : 'red'}">
+              {{obtenerMensajeEmail()}} </span>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="contrasena" required></ion-input>
+            <span *ngIf="iniciarSesionFormu.controls.contrasena.invalid && iniciarSesionFormu.controls.contrasena.touched" 
+            [ngStyle] ="{'color' : 'red'}">
+              {{obtenerMensajeContrasena()}} </span>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button type="submit" color="danger" expand="block" [disabled]="!iniciarSesionFormu.valid"> 
+                    Iniciar sesión</ion-button>
+                <!--<a [routerLink]="['/recuperar-contrasena']" class="small-text">¿Olvidaste tu contraseña?</a>-->
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
