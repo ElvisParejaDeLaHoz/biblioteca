@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage-angular';
 export class StorageService {
   private _storage: Storage | null = null;
 
-  constructor(private storage: Storage) { 
+  constructor(private storage: Storage) {
     this.init();
   }
 
@@ -16,11 +16,11 @@ export class StorageService {
     this._storage = storage;
   }
 
-  async guardar(key: string, value: any) {
+  async save(key: string, value: any) {
     this._storage?.set(key, value);
   }
 
-  async obtener(key: string){
+  async get(key: string){
     return this._storage?.get(key);
   }
 }

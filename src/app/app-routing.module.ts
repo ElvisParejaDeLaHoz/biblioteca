@@ -8,30 +8,34 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  
+
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'info',
-    loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
   },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'registrar',
-    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'menu',
     loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
   },
   {
-    path: 'recuperar-contrasena',
-    loadChildren: () => import('./pages/recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
+    path: 'book-detail-modal',
+    loadChildren: () => import('./pages/book-detail-modal/book-detail-modal.module').then( m => m.BookDetailModalPageModule)
+  },
+  {
+    path: 'books-modal',
+    loadChildren: () => import('./pages/books-modal/books-modal.module').then( m => m.BooksModalPageModule)
+  },
+  {
+    path: 'intro',
+    loadChildren: () => import('./pages/intro/intro.module').then( m => m.IntroPageModule)
   },
 ];
 

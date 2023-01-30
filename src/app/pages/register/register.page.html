@@ -1,0 +1,66 @@
+<app-header titulo="Regístrate"></app-header>
+
+<ion-content>
+  <form [formGroup]="registerForm"  (ngSubmit)="register(registerForm.value)" >
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="Enter text" formControlName="name" required></ion-input>
+      <span *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.touched"
+            [ngStyle]="{'color' : 'red'}"> {{getMessageName()}} </span>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="Enter text" formControlName="last_name" required></ion-input>
+      <span *ngIf="registerForm.controls.last_name.invalid && registerForm.controls.last_name.touched"
+            [ngStyle]="{'color' : 'red'}"> {{getMessageLastName()}} </span>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Tipo de documento</ion-label>
+      <ion-select interface="action-sheet" formControlName="document_type" >
+        <ion-select-option value="cc">Cédula ciudadanía</ion-select-option>
+        <ion-select-option value="ti">Tarjeta identidad</ion-select-option>
+        <ion-select-option value="ce">Cédula extranjería</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Número documento</ion-label>
+      <ion-input type="Enter text" formControlName="document_number" required></ion-input>
+      <span *ngIf="registerForm.controls.document_number.invalid
+      && registerForm.controls.document_number.touched"
+            [ngStyle] ="{'color' : 'red'}">{{getMessageDocumentNumber()}} </span>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Carrera</ion-label>
+      <ion-input type="Enter text" formControlName="career" required></ion-input>
+      <span *ngIf="registerForm.controls.career.invalid
+      && registerForm.controls.career.touched"
+            [ngStyle] ="{'color' : 'red'}">{{getMessageCareer()}} </span>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email" required></ion-input>
+      <span *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched"
+            [ngStyle] ="{'color' : 'red'}">{{getMessageEmail()}} </span>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password" required></ion-input>
+      <span *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched"
+            [ngStyle] ="{'color' : 'red'}">{{getMessagePassword()}} </span>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block"
+                    [disabled]="!registerForm.valid">Regístrese</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

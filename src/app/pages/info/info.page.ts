@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuController, ModalController, NavController} from "@ionic/angular";
+import {LibraryService} from "../../services/library.service";
+import { BooksModalPage } from '../books-modal/books-modal.page';
 
 @Component({
   selector: 'app-info',
@@ -7,11 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoPage  {
 
-  title: string;
-  arraySlides: { titulo: string, descripcion: string, imagen: string }[];
+  authors: any;
+  booksOff: any;
 
-  slideOpt = {
-    initialSlide: 1,
+  slideOps = {
     slidesPerView: 1,
     centerSlides: true,
     speed: 400,
@@ -19,37 +21,45 @@ export class InfoPage  {
     autoplay: {
       delay: 4000
     }
-  };
+  }
+  constructor(
+    private libraryService: LibraryService,
+    private modalController: ModalController,
+    private navCtrl: NavController,
+    private menu: MenuController
+  ) {}
 
-  constructor() {
-    this.title = "Mi Biblioteca";
-    this.arraySlides = [
-      {
-        "titulo": "Crea un rincón lector",
-        "descripcion": "Leer es un acto que necesita de concentración y tranquilidad, pero también de comodidad y de bienestar.",
-        "imagen": "../../assets/imagen/lugar_para_leer.jpg"
-      },
-      {
-        "titulo": "Predicar con el ejemplo.",
-        "descripcion": "Es evidente que si tú no lees, el niño que ve en ti ese ejemplo a seguir, no lo hará.",
-        "imagen": "../../assets/imagen/1.jpg"
-      },
-      {
-        "titulo": "Crea una tradición lectora.",
-        "descripcion": "Buscar un lugar ideal para la lectura es tan importante como buscar el momento",
-        "imagen": "../../assets/imagen/4.jpg"
-      }, 
-      {
-        "titulo": "Hacer del libro un regalo especial.",
-        "descripcion": "Regálales libros. Si eres padre, en sus cumpleaños y fiestas, siempre libros.",
-        "imagen": "../../assets/imagen/5.jpg"
-      },
-      {
-        "titulo": "Visitar actividades que fomenten la lectura.",
-        "descripcion": "Conciertos, cuenta cuentos, obras de teatro, títeres, cine, etc.",
-        "imagen": "../../assets/imagen/3.jpg"
+  ionViewDidEnter(){
+    this.libraryService.getAuthors().then( (response: any) => {
+      this.authors = response;
+    })
+
+    this.booksOff = this.libraryService.getBooksOffline();
+  }
+
+  async showBooks(author:any) {
+    const modal = await this.modalController.create({
+      component: BooksModalPage,
+      componentProps: {
+        author: author
       }
-    ]
+    });
+    return await modal.present();
+  }
+
+  goToAuthors(){
+    this.navCtrl.navigateForward("/menu/authors");
+    this.menu.close();
+  }
+
+  goToBooks(){
+    this.navCtrl.navigateForward("/menu/books");
+    this.menu.close();
+  }
+
+  goToMyFavorites(){
+    this.navCtrl.navigateForward("/menu/favorite-books");
+    this.menu.close();
   }
 
 }
