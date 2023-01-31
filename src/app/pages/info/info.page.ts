@@ -62,4 +62,9 @@ export class InfoPage  {
     this.menu.close();
   }
 
+  goToTopBooks(){
+    this.navCtrl.navigateForward("/menu/top");
+    this.menu.close();
+  }
+
 }

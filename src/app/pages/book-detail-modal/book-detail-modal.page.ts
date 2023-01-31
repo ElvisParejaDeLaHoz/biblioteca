@@ -49,12 +49,12 @@ export class BookDetailModalPage implements OnInit {
   disLike() {
     this.libraryService.disLike(this.user_id, this.book.id)
       .subscribe((data: any) => {
-        if (data.status == "OK") {
-          this.like_button = false
-        }
-      }, (error) =>
-        console.log(error)
-    )
+          if (data.status == "OK") {
+            this.like_button = false
+          }
+        }, (error) =>
+          console.log(error)
+      )
   }
 
 }

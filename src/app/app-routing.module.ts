@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IntroGuard } from './pages/guards/intro.guard';
+import { LoginGuard } from './pages/guards/login.guard';
 
 const routes: Routes = [
-
   {
     path: '',
     redirectTo: 'home',
@@ -37,7 +38,12 @@ const routes: Routes = [
     path: 'intro',
     loadChildren: () => import('./pages/intro/intro.module').then( m => m.IntroPageModule)
   },
+  {
+    path: 'author-detail-model',
+    loadChildren: () => import('./pages/author-detail-model/author-detail-model.module').then( m => m.AuthorDetailModelPageModule)
+  }
 ];
+
 
 @NgModule({
   imports: [
