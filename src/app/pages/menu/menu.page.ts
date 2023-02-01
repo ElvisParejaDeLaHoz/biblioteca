@@ -24,7 +24,9 @@ export class MenuPage implements OnInit {
   logout() {
     this.storage.remove("user_id").then(value => {
         this.storage.save("isUserLoggedIn", false).then(responseSave => {
-          this.navController.navigateRoot("/home");
+          this.storage.save("isIntroShowed", false).then(value1 => {
+            this.navController.navigateRoot("/home");
+          });
         })
       }
     );

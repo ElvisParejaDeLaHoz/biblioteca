@@ -9,43 +9,61 @@ import {StorageService} from "../../services/storage.service";
 })
 export class IntroPage implements OnInit {
 
-  slideOpt = {
-    initialSlide: 1, //slide inicial (primero) [0,1,2,3]
-    slidesPerView: 1, //configuramos un slide por vista
-    centerSlides: true, //que las slides enten centradas
-    speed: 400 //velocidad movimiento de los slides
-  }
+  title: string;
+  arraySlides: { titulo: string, descripcion: string, imagen: string }[];
 
-  slides = [
-    {
-      title: "Title 1",
-      desc: "sdasdfsd",
-      subtitle: "subtitle 1",
-      img: "https://www.zooplus.es/magazine/wp-content/uploads/2022/05/Cuanto-pesa-un-gato-2.jpeg",
-      description: "Lorem Ipsum  and typesetting industry."
-    },
-    {
-      title: "Title 2",
-      desc: "",
-      subtitle: "subtitle 2",
-      img: "assets/logo.png",
-      description: "Lorem Ipsum is simply dummy text of the printing ."
-    },
-    {
-      title: "Title 3",
-      desc: null,
-      subtitle: "subtitle 3",
-      img: "https://www.zooplus.es/magazine/wp-content/uploads/2022/05/Cuanto-pesa-un-gato-2.jpeg",
-      description: "simply dummy text of the printing and typesetting industry."
+  slideOpt = {
+    initialSlide: 1,
+    slidesPerView: 1,
+    centerSlides: true,
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 4000
     }
-  ]
+  };
 
   constructor(private router: Router, private storage: StorageService) {
+    this.title = "Mi Biblioteca";
+    this.arraySlides = [
+      {
+        "titulo": "Crea un rincón lector",
+        "descripcion": "Leer es un acto que necesita de concentración y tranquilidad, pero también de comodidad y de bienestar.",
+        "imagen": "../../assets/imagen/lugar_para_leer.jpg"
+      },
+      {
+        "titulo": "Predicar con el ejemplo.",
+        "descripcion": "Es evidente que si tú no lees, el niño que ve en ti ese ejemplo a seguir, no lo hará.",
+        "imagen": "../../assets/imagen/1.jpg"
+      },
+      {
+        "titulo": "Crea una tradición lectora.",
+        "descripcion": "Buscar un lugar ideal para la lectura es tan importante como buscar el momento",
+        "imagen": "../../assets/imagen/4.jpg"
+      },
+      {
+        "titulo": "Hacer del libro un regalo especial.",
+        "descripcion": "Regálales libros. Si eres padre, en sus cumpleaños y fiestas, siempre libros.",
+        "imagen": "../../assets/imagen/5.jpg"
+      },
+      {
+        "titulo": "Visitar actividades que fomenten la lectura.",
+        "descripcion": "Conciertos, cuenta cuentos, obras de teatro, títeres, cine, etc.",
+        "imagen": "../../assets/imagen/3.jpg"
+      }
+    ]
+  }
+
+  ionViewDidEnter() {
+    this.storage.get("isIntroShowed").then(value => {
+      if (value) {
+        this.router.navigateByUrl("/home");
+      }
+    });
   }
 
   finish() {
     this.storage.save("isIntroShowed", true);
-    this.router.navigateByUrl("/home");
   }
 
   ngOnInit() {

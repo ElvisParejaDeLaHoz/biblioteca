@@ -38,6 +38,7 @@ export class RegisterPage implements OnInit {
   register(user: any){
     console.log(user);
     this.authService.register(user).then( response => {
+
       this.navController.navigateForward("/login");
     }).catch(reason => {
       let messageError: string = 'Comuníquese con el administrador'
@@ -79,11 +80,17 @@ export class RegisterPage implements OnInit {
     return;
   }
 
+  getMessageTypeDocument(){
+    if(this.registerForm.controls.document_type.hasError('required')){
+      return this.REQUIRED_FIELD;
+    }
+    return;
+  }
+
   getMessageDocumentNumber(){
     if(this.registerForm.controls.document_number.hasError('required')){
       return this.REQUIRED_FIELD;
     }
-
     return;
   }
 

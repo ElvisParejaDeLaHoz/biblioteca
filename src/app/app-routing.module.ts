@@ -6,7 +6,7 @@ import { LoginGuard } from './pages/guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'intro',
     pathMatch: 'full'
   },
 

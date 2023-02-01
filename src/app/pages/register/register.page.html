@@ -24,6 +24,9 @@
         <ion-select-option value="ti">Tarjeta identidad</ion-select-option>
         <ion-select-option value="ce">Cédula extranjería</ion-select-option>
       </ion-select>
+      <span *ngIf="registerForm.controls.document_type.invalid
+      && registerForm.controls.document_type.touched"
+            [ngStyle] ="{'color' : 'red'}">{{getMessageTypeDocument()}} </span>
     </ion-item>
 
     <ion-item lines="full">
@@ -36,7 +39,10 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Carrera</ion-label>
-      <ion-input type="Enter text" formControlName="career" required></ion-input>
+      <ion-select interface="action-sheet" formControlName="career" >
+        <ion-select-option value="sistemas">Ingenería de sistemas</ion-select-option>
+        <ion-select-option value="administracion">Administración</ion-select-option>
+      </ion-select>
       <span *ngIf="registerForm.controls.career.invalid
       && registerForm.controls.career.touched"
             [ngStyle] ="{'color' : 'red'}">{{getMessageCareer()}} </span>
