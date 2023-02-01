@@ -1,7 +1,8 @@
-<app-header titulo="Regístrate"></app-header>
+<app-header titulo=""></app-header>
 
-<ion-content>
-  <form [formGroup]="registerForm"  (ngSubmit)="register(registerForm.value)" >
+<ion-content class="container ion-padding">
+  <h1 class="ion-text-center title">Regístrate</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
 
     <ion-item lines="full">
       <ion-label position="floating">Nombre</ion-label>
@@ -19,14 +20,14 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Tipo de documento</ion-label>
-      <ion-select interface="action-sheet" formControlName="document_type" >
+      <ion-select interface="action-sheet" formControlName="document_type">
         <ion-select-option value="cc">Cédula ciudadanía</ion-select-option>
         <ion-select-option value="ti">Tarjeta identidad</ion-select-option>
         <ion-select-option value="ce">Cédula extranjería</ion-select-option>
       </ion-select>
       <span *ngIf="registerForm.controls.document_type.invalid
       && registerForm.controls.document_type.touched"
-            [ngStyle] ="{'color' : 'red'}">{{getMessageTypeDocument()}} </span>
+            [ngStyle]="{'color' : 'red'}">{{getMessageTypeDocument()}} </span>
     </ion-item>
 
     <ion-item lines="full">
@@ -34,38 +35,39 @@
       <ion-input type="Enter text" formControlName="document_number" required></ion-input>
       <span *ngIf="registerForm.controls.document_number.invalid
       && registerForm.controls.document_number.touched"
-            [ngStyle] ="{'color' : 'red'}">{{getMessageDocumentNumber()}} </span>
+            [ngStyle]="{'color' : 'red'}">{{getMessageDocumentNumber()}} </span>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Carrera</ion-label>
-      <ion-select interface="action-sheet" formControlName="career" >
+      <ion-select interface="action-sheet" formControlName="career">
         <ion-select-option value="sistemas">Ingenería de sistemas</ion-select-option>
         <ion-select-option value="administracion">Administración</ion-select-option>
       </ion-select>
       <span *ngIf="registerForm.controls.career.invalid
       && registerForm.controls.career.touched"
-            [ngStyle] ="{'color' : 'red'}">{{getMessageCareer()}} </span>
+            [ngStyle]="{'color' : 'red'}">{{getMessageCareer()}} </span>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" formControlName="email" required></ion-input>
       <span *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched"
-            [ngStyle] ="{'color' : 'red'}">{{getMessageEmail()}} </span>
+            [ngStyle]="{'color' : 'red'}">{{getMessageEmail()}} </span>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input type="password" formControlName="password" required></ion-input>
       <span *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched"
-            [ngStyle] ="{'color' : 'red'}">{{getMessagePassword()}} </span>
+            [ngStyle]="{'color' : 'red'}">{{getMessagePassword()}} </span>
     </ion-item>
 
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="danger" expand="block"
-                    [disabled]="!registerForm.valid">Regístrese</ion-button>
+                    [disabled]="!registerForm.valid">Regístrese
+        </ion-button>
       </ion-col>
     </ion-row>
   </form>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="container title">
     <ion-buttons>
       <ion-button slot="end" (click)="closeModal()">
         Cerrar
@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="container ion-padding">
   <ion-list>
     <ion-item *ngFor="let author of bookAuthor" >
       <ion-label>{{author.name}}</ion-label>

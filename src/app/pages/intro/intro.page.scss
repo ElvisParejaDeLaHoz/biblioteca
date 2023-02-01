@@ -1,7 +1,5 @@
 .slide-full {
   height: 100%;
-  --bullet-background-active : var( --color-slide)
-
 }
 
 ion-card {
@@ -19,12 +17,10 @@ ion-card {
 }
 
 .title {
-  font-style: var(--font-primary);
   font-size: 22px;
   position: relative;
   text-align: center;
   margin: 10%;
-  color: #FFF;
   top: auto;
 }
 
@@ -45,7 +41,7 @@ ion-card-content {
   top: -11px;
 }
 
-.container{
+.containerDiv{
   display: block;
   max-width: 100%;
 }

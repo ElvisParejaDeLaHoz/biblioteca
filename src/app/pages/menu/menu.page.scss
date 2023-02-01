@@ -1,7 +1,3 @@
-ion-content {
-  --background: blue;
-}
-
 ion-slides {
   background-color: red;
   height: 100%;
@@ -38,4 +34,8 @@ ion-split-pane{
   --background-hover:transparent;
   --background-activated: transparent;
   --background-focused: transparent;
+}
+
+ion-item {
+  --ion-item-background: transparent;
 }

@@ -24,3 +24,17 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.container {
+  --background: var(--bg-grandieng-color);
+  --background: var(--bg-webkit-color);
+  --background: var(--bg-linear-gradientr);
+}
+
+.title{
+  font-weight: bold;
+}
+
+ion-item {
+  --ion-item-background: transparent;
+}

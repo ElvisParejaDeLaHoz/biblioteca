@@ -1,7 +1,8 @@
-<app-header titulo="Info" (click)="finish()"></app-header>
+<app-header titulo="" (click)="finish()"></app-header>
 
-<ion-content>
-  <div class="container">
+<ion-content class="container">
+  <h1 class="ion-text-center title">Bienvenido a tu Biblioteca</h1>
+  <div class="containerDiv">
     <ion-slides class="slide-full" pager="true" [options]="slideOpt">
       <ion-slide *ngFor="let slide of arraySlides">
         <ion-card mode="ios">

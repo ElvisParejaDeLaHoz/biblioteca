@@ -1,6 +1,7 @@
-<app-header titulo="Iniciar sesión"></app-header>
+<app-header titulo=""></app-header>
 
-<ion-content>
+<ion-content class="container ion-padding">
+    <h1 class="ion-text-center title">Iniciar sesión</h1>
     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
         <ion-item lines="full">
             <ion-label position="floating">Email</ion-label>
